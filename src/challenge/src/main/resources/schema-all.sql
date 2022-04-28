@@ -1,4 +1,6 @@
-DROP TABLE match IF EXISTS;
+DROP TABLE match_data IF EXISTS;
+DROP TABLE scoreboard IF EXISTS;
+DROP TABLE season_statistics IF EXISTS;
 
 CREATE TABLE match_data  (
     team VARCHAR(20) NOT NULL,
