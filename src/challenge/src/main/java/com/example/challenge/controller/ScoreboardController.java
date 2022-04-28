@@ -33,7 +33,8 @@ public class ScoreboardController {
     @GetMapping("/{season}/{team}")
     public ResponseEntity<ScoreboardDAO> getScoreBoardById(@PathVariable String season, @PathVariable String team){
         Optional<ScoreboardDAO> scoreboardDAO = scoreboardRepository.findById(new ScoreboardId(season, team));
-        return scoreboardDAO.map(dao -> new ResponseEntity<>(dao, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
+        return scoreboardDAO.map(dao -> new ResponseEntity<>(dao, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
     @GetMapping("/{season}")
@@ -41,4 +42,5 @@ public class ScoreboardController {
         List<ScoreboardDAO> scoreboardDAOList = scoreboardRepository.findAllBySeason(season);
         return scoreboardDAOList.isEmpty() ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : new ResponseEntity<>(scoreboardDAOList, HttpStatus.OK);
     }
+
 }

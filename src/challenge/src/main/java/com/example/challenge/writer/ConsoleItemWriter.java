@@ -1,4 +1,4 @@
-package com.example.challenge.writers;
+package com.example.challenge.writer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemWriter;

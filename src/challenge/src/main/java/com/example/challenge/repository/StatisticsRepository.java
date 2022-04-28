@@ -1,4 +1,8 @@
 package com.example.challenge.repository;
 
-public class StatisticsRepository {
+import com.example.challenge.model.dao.StatisticsDAO;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface StatisticsRepository extends JpaRepository<StatisticsDAO, String> {
+
 }

@@ -25,13 +25,12 @@ CREATE TABLE scoreboard (
 );
 
 CREATE TABLE season_statistics (
-    winner_team VARCHAR(20) NOT NULL,
-    most_goals_number SMALLINT NOT NULL DEFAULT 0,
-    most_goals_team VARCHAR(20) NOT NULL,
-    most_goals_against_number SMALLINT NOT NULL DEFAULT 0,
-    most_goals_against_team VARCHAR(20) NOT NULL,
-    best_goals_ratio_number SMALLINT NOT NULL DEFAULT 0,
-    best_goals_ratio_team VARCHAR(20) NOT NULL,
+    most_goals_team VARCHAR(20),
+    most_goals_number SMALLINT DEFAULT 0,
+    most_goals_against_team VARCHAR(20),
+    most_goals_against_number SMALLINT DEFAULT 0,
+    best_goals_ratio_team VARCHAR(20) ,
+    best_goals_ratio_number DOUBLE DEFAULT 0,
     season char(5) NOT NULL,
     PRIMARY KEY (season)
 );
