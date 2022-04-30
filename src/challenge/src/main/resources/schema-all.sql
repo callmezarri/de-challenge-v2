@@ -1,11 +1,13 @@
 DROP TABLE match_data IF EXISTS;
 DROP TABLE scoreboard IF EXISTS;
-DROP TABLE season_statistics IF EXISTS;
+DROP TABLE most_scored IF EXISTS;
+DROP TABLE best_scorer IF EXISTS;
+DROP TABLE best_ratio IF EXISTS;
 
 CREATE TABLE match_data  (
     team VARCHAR(20) NOT NULL,
     score SMALLINT NOT NULL,
-    date VARCHAR(20) NOT NULL,
+    date DATE NOT NULL,
     season CHAR(5) NOT NULL,
     goals SMALLINT NOT NULL,
     goals_against SMALLINT NOT NULL,
@@ -26,13 +28,23 @@ CREATE TABLE scoreboard (
     PRIMARY KEY (team, season)
 );
 
-CREATE TABLE season_statistics (
-    most_goals_team VARCHAR(20),
-    most_goals_number SMALLINT DEFAULT 0,
-    most_goals_against_team VARCHAR(20),
-    most_goals_against_number SMALLINT DEFAULT 0,
-    best_goals_ratio_team VARCHAR(20) ,
-    best_goals_ratio_number DOUBLE DEFAULT 0,
+CREATE TABLE most_scored (
+    most_goals_against_team VARCHAR(20) NOT NULL,
+    most_goals_against_number SMALLINT DEFAULT 0 NOT NULL,
     season char(5) NOT NULL,
-    PRIMARY KEY (season)
+    PRIMARY KEY (season, most_goals_against_team, most_goals_against_number)
+);
+
+CREATE TABLE best_scorer (
+    most_goals_team VARCHAR(20) NOT NULL,
+    most_goals_number SMALLINT DEFAULT 0 NOT NULL,
+    season char(5) NOT NULL,
+    PRIMARY KEY (season, most_goals_team, most_goals_number)
+);
+
+CREATE TABLE best_ratio (
+    best_goals_ratio_team VARCHAR(20) NOT NULL,
+    best_goals_ratio_number DOUBLE DEFAULT 0 NOT NULL,
+    season char(5) NOT NULL,
+    PRIMARY KEY (season, best_goals_ratio_team, best_goals_ratio_number)
 );
